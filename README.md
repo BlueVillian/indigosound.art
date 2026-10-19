@@ -1,0 +1,31 @@
+# indigosound.art 정적 사이트
+
+Wix로 운영하던 `indigobluestudio.wixsite.com/indigoblue-soundstud` 를
+정적 HTML·CSS·JS로 옮긴 결과물입니다. GitHub Pages에 그대로 올릴 수 있습니다.
+
+## 구성
+
+- `template.html` — 사람이 고치는 원본입니다. 문구와 구조는 여기서 수정합니다.
+- `index.html` — 생성 결과물입니다. 직접 고치지 말고 생성기를 다시 실행해 주세요.
+- `assets/css/site.css` — 사이트 전체의 디자인입니다.
+- `assets/js/player.js` — 미리듣기 재생을 담당합니다.
+- `assets/img`, `assets/video` — Wix 미디어에서 내려받아 둔 이미지와 배경 영상입니다.
+- `CNAME` — GitHub Pages에 커스텀 도메인을 알려 주는 파일입니다.
+
+## 다시 만드는 방법
+
+```
+node tools/build.mjs
+```
+
+포트폴리오 카드 23칸과 미리듣기 18곡은 Wix 시절에 쓰던
+`src/public/portfolioProjects.js`, `src/public/audioTracks.js`,
+`src/public/projectGridMarkup.js`, `src/public/audioGridMarkup.js` 를
+그대로 읽어서 만듭니다. 따라서 곡이나 프로젝트를 바꿀 때에는
+지금까지와 똑같이 그 파일들만 고친 뒤 생성기를 한 번 실행하면 됩니다.
+
+## 확인해 둘 점
+
+미리듣기 음원은 아직 Wix 미디어 서버(`music.wixstatic.com`)를 그대로 참조합니다.
+Wix 사이트를 정리할 계획이라면, `portfolio-assets/audio` 의 파일을
+`assets/audio` 로 옮기고 `src/public/audioTracks.js` 의 주소를 바꿔야 합니다.
