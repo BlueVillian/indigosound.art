@@ -5,7 +5,7 @@ Wix로 운영하던 `indigobluestudio.wixsite.com/indigoblue-soundstud` 를
 
 ## 구성
 
-- `template.html` — 사람이 고치는 원본입니다. 문구와 구조는 여기서 수정합니다.
+- `../tools/template.html` — 사람이 고치는 원본입니다. 문구와 구조는 여기서 수정합니다.
 - `index.html` — 생성 결과물입니다. 직접 고치지 말고 생성기를 다시 실행해 주세요.
 - `assets/css/site.css` — 사이트 전체의 디자인입니다.
 - `assets/js/player.js` — 미리듣기 재생을 담당합니다.
