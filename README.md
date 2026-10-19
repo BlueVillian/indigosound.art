@@ -43,6 +43,8 @@ git branch -D site-root
 
 ## 확인해 둘 점
 
-미리듣기 음원은 아직 Wix 미디어 서버(`music.wixstatic.com`)를 그대로 참조합니다.
-Wix 사이트를 정리할 계획이라면, `portfolio-assets/audio` 의 파일을
-`assets/audio` 로 옮기고 `src/public/audioTracks.js` 의 주소를 바꿔야 합니다.
+미리듣기 음원 18곡은 `site/assets/audio` 안에 함께 들어 있으므로,
+Wix 미디어 서버를 더 이상 참조하지 않습니다. 다만 `src/public/audioTracks.js` 의
+`AUDIO_BASE_URL` 이 상대 경로가 되었기 때문에, 같은 모듈을 Wix 페이지 코드에서
+그대로 쓰면 음원을 찾지 못합니다. Wix 쪽에서 다시 재생해야 한다면
+그 페이지에서는 절대 주소를 따로 지정해야 합니다.
