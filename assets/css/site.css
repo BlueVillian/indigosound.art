@@ -71,6 +71,36 @@ a { color: inherit; }
     font-weight: 400;
     line-height: 0.95;
 }
+
+/*
+  히어로의 등장 애니메이션입니다. 원본 Wix 사이트의 움직임을 그대로 옮겼습니다.
+  로고는 가운데에서 원이 열리듯 드러나고, 글자 묶음은 왼쪽에서 밀려 들어오면서
+  오른쪽 모서리를 기준으로 닦이듯 나타납니다.
+*/
+@keyframes ib-mark-in {
+    from { opacity: 0; clip-path: circle(0%); }
+    to   { opacity: 1; clip-path: circle(75%); }
+}
+@keyframes ib-type-in {
+    0% { opacity: 0; }
+    /* 원본과 같이, 글자는 처음부터 불투명하고 잘라내기로만 가려 둡니다. */
+    0.01% {
+        opacity: 1;
+        transform: translateX(-100%);
+        clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+}
+.ib-hero__mark {
+    animation: ib-mark-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.ib-hero__type {
+    animation: ib-type-in 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
 .ib-hero__type span { display: block; }
 .ib-hero__type .ib-hero__l1 { font-size: 140px; }
 .ib-hero__type .ib-hero__l2 { font-size: 121px; }
@@ -373,16 +403,22 @@ a { color: inherit; }
     padding: 120px 0 48px;
     overflow: hidden;
 }
-/* 원본의 파란 반원입니다. 아래쪽에서 크게 솟아오른 타원 모양입니다. */
+/*
+  원본의 파란 반원입니다. 아래쪽에서 크게 솟아오른 타원 모양입니다.
+  패럴렉스로 아래로 밀려나도 섹션 바닥에 틈이 생기지 않도록,
+  섹션 밖으로 200px 더 내려 둔 뒤 넘치는 부분을 잘라냅니다.
+  그만큼 높이가 늘었으므로, 곡선의 깊이는 세로 반지름을 따로 지정해 유지합니다.
+*/
 .ib-outro__arc {
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: -200px;
     width: 150vw;
-    height: 440px;
+    height: 640px;
     transform: translateX(-50%);
-    border-radius: 50% 50% 0 0;
+    border-radius: 50% 50% 0 0 / 220px 220px 0 0;
     background: var(--ib-blue);
+    will-change: transform;
 }
 .ib-outro__inner { position: relative; }
 .ib-outro__headline {
@@ -391,6 +427,7 @@ a { color: inherit; }
     font-size: 64px;
     line-height: 1.22;
     font-weight: 700;
+    will-change: transform;
 }
 .ib-outro__headline span { display: block; }
 .ib-outro__foot {
@@ -465,6 +502,23 @@ a { color: inherit; }
 
     .ib-outro { min-height: 0; padding: 72px 0 40px; }
     .ib-outro__headline { font-size: 36px; margin-bottom: 100px; }
-    .ib-outro__arc { height: 300px; width: 200vw; }
+    .ib-outro__arc {
+        width: 200vw;
+        height: 500px;
+        border-radius: 50% 50% 0 0 / 150px 150px 0 0;
+    }
     .ib-outro__foot { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── 움직임을 줄여 달라는 설정을 존중합니다 ──────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ib-hero__mark,
+    .ib-hero__type {
+        animation: none;
+        opacity: 1;
+        clip-path: none;
+        transform: none;
+    }
+    /* 패럴렉스는 motion.js 가 이 설정을 보고 아예 걸지 않습니다. */
 }
