@@ -9,7 +9,6 @@ Wix로 운영하던 `indigobluestudio.wixsite.com/indigoblue-soundstud` 를
 - `index.html` — 생성 결과물입니다. 직접 고치지 말고 생성기를 다시 실행해 주세요.
 - `assets/css/site.css` — 사이트 전체의 디자인입니다.
 - `assets/js/player.js` — 미리듣기 재생을 담당합니다.
-- `assets/js/motion.js` — 마무리 영역의 패럴렉스를 담당합니다.
 - `assets/img`, `assets/video` — Wix 미디어에서 내려받아 둔 이미지와 배경 영상입니다.
 - `CNAME` — GitHub Pages에 커스텀 도메인을 알려 주는 파일입니다.
 

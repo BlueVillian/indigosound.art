@@ -403,22 +403,16 @@ a { color: inherit; }
     padding: 120px 0 48px;
     overflow: hidden;
 }
-/*
-  원본의 파란 반원입니다. 아래쪽에서 크게 솟아오른 타원 모양입니다.
-  패럴렉스로 아래로 밀려나도 섹션 바닥에 틈이 생기지 않도록,
-  섹션 밖으로 200px 더 내려 둔 뒤 넘치는 부분을 잘라냅니다.
-  그만큼 높이가 늘었으므로, 곡선의 깊이는 세로 반지름을 따로 지정해 유지합니다.
-*/
+/* 원본의 파란 반원입니다. 아래쪽에서 크게 솟아오른 타원 모양입니다. */
 .ib-outro__arc {
     position: absolute;
     left: 50%;
-    bottom: -200px;
+    bottom: 0;
     width: 150vw;
-    height: 640px;
+    height: 440px;
     transform: translateX(-50%);
-    border-radius: 50% 50% 0 0 / 220px 220px 0 0;
+    border-radius: 50% 50% 0 0;
     background: var(--ib-blue);
-    will-change: transform;
 }
 .ib-outro__inner { position: relative; }
 .ib-outro__headline {
@@ -427,7 +421,6 @@ a { color: inherit; }
     font-size: 64px;
     line-height: 1.22;
     font-weight: 700;
-    will-change: transform;
 }
 .ib-outro__headline span { display: block; }
 .ib-outro__foot {
@@ -502,11 +495,7 @@ a { color: inherit; }
 
     .ib-outro { min-height: 0; padding: 72px 0 40px; }
     .ib-outro__headline { font-size: 36px; margin-bottom: 100px; }
-    .ib-outro__arc {
-        width: 200vw;
-        height: 500px;
-        border-radius: 50% 50% 0 0 / 150px 150px 0 0;
-    }
+    .ib-outro__arc { width: 200vw; height: 300px; }
     .ib-outro__foot { flex-direction: column; align-items: flex-start; }
 }
 
@@ -520,5 +509,4 @@ a { color: inherit; }
         clip-path: none;
         transform: none;
     }
-    /* 패럴렉스는 motion.js 가 이 설정을 보고 아예 걸지 않습니다. */
 }
