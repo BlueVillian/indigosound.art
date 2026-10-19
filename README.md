@@ -24,6 +24,23 @@ node tools/build.mjs
 그대로 읽어서 만듭니다. 따라서 곡이나 프로젝트를 바꿀 때에는
 지금까지와 똑같이 그 파일들만 고친 뒤 생성기를 한 번 실행하면 됩니다.
 
+## 발행하는 방법
+
+발행용 공개 저장소는 `BlueVillian/indigosound.art` 이고,
+그 저장소의 루트가 이 `site/` 폴더입니다.
+`git subtree` 로 이 폴더만 떼어 내어 올립니다.
+
+```
+node tools/build.mjs
+git add site && git commit -m "사이트 내용 수정"
+git subtree split --prefix=site -b site-root
+git push https://github.com/BlueVillian/indigosound.art.git site-root:main
+git branch -D site-root
+```
+
+이 저장소는 Wix와 연결되어 있으므로, 발행용 저장소에는
+`site/` 안의 파일만 올라가고 Wix 쪽 코드는 올라가지 않습니다.
+
 ## 확인해 둘 점
 
 미리듣기 음원은 아직 Wix 미디어 서버(`music.wixstatic.com`)를 그대로 참조합니다.
